@@ -1,5 +1,7 @@
 # Codex Client Provider
 
+**English** | [简体中文](README_CN.md)
+
 [![CI](https://github.com/HJunLong601/codex-client-provider/actions/workflows/ci.yml/badge.svg)](https://github.com/HJunLong601/codex-client-provider/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/pypi/pyversions/codex-client-provider.svg)](https://pypi.org/project/codex-client-provider/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)

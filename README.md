@@ -51,16 +51,16 @@ codex login status
 
 ## Install
 
-Install the current source checkout:
-
-```console
-python -m pip install .
-```
-
-After the first PyPI release, install it with:
+Install the published package from PyPI:
 
 ```console
 python -m pip install codex-client-provider
+```
+
+To work from a source checkout instead:
+
+```console
+python -m pip install -e ".[dev]"
 ```
 
 ## Basic usage

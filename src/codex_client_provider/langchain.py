@@ -26,20 +26,20 @@ from __future__ import annotations
 import asyncio
 import atexit
 import base64
-from collections.abc import Callable, Sequence
-from functools import lru_cache
-from io import BytesIO
 import json
 import logging
 import os
-from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import weakref
+from collections.abc import Callable, Sequence
+from functools import lru_cache
+from io import BytesIO
+from pathlib import Path
 from typing import Any
 from urllib.parse import unquote_to_bytes
 from uuid import uuid4
-import weakref
 
 from langchain_core.callbacks import AsyncCallbackManagerForLLMRun, CallbackManagerForLLMRun
 from langchain_core.language_models.chat_models import BaseChatModel
@@ -706,9 +706,11 @@ def _response_contract(tools: list[dict[str, Any]], tool_choice: Any) -> tuple[d
     }
     contract = (
         "The host application owns tool execution. Do not run shell commands, browse, edit files, "
-        "or use any Codex built-in tools. Choose from the supplied tool schemas. Return exactly the "
+        "or use any Codex built-in tools. Choose from the supplied tool schemas. Return exactly "
+        "the "
         "JSON object required by the output schema. For kind=tool_call, set tool_name and encode "
-        "the arguments object as JSON in tool_arguments_json; content may be empty. For kind=final, "
+        "the arguments object as JSON in tool_arguments_json; content may be empty. For "
+        "kind=final, "
         "put the answer in content and use the first available tool name with '{}' arguments."
     )
     return schema, contract

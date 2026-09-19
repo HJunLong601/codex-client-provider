@@ -9,9 +9,11 @@ description = "Reusable LangChain provider for a locally signed-in Codex App Ser
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
 authors = [
     { name = "Codex Client Provider contributors" },
 ]
+keywords = ["codex", "langchain", "openai", "app-server", "llm"]
 dependencies = [
     "langchain-core>=1.0.0",
     "pillow>=10.0.0",
@@ -19,11 +21,30 @@ dependencies = [
 ]
 classifiers = [
     "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+Homepage = "https://github.com/HJunLong601/codex-client-provider"
+Documentation = "https://github.com/HJunLong601/codex-client-provider#readme"
+Issues = "https://github.com/HJunLong601/codex-client-provider/issues"
+Repository = "https://github.com/HJunLong601/codex-client-provider"
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2.2",
+    "pyright>=1.1.390",
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "ruff>=0.9",
+    "twine>=6.0",
 ]
 
 [tool.setuptools.packages.find]
@@ -37,3 +58,14 @@ include = ["src", "tests"]
 extraPaths = ["src"]
 pythonVersion = "3.10"
 typeCheckingMode = "standard"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

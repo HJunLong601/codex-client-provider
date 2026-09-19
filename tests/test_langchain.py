@@ -15,15 +15,15 @@
 """Unit coverage for the key-free Codex App Server LangChain adapter."""
 
 import base64
-from io import BytesIO
 import json
+from io import BytesIO
 from pathlib import Path
 
+import pytest
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_core.tools import tool
 from PIL import Image
 from pydantic import BaseModel
-import pytest
 
 import codex_client_provider.langchain as codex_module
 from codex_client_provider import CodexAppServerChatModel

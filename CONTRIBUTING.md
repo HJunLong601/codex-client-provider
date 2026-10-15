@@ -30,6 +30,12 @@ Codex CLI version used.
 
 ## Release process
 
+The Node package is maintained in `packages/node`. Run `npm ci`, `npm test`,
+`npm run typecheck`, and `npm pack --dry-run` there; `npm run smoke` is an optional live check.
+It is not covered by the PyPI workflow. Before an npm release, verify ownership
+of the package name (or select a scope), update its version and handshake
+version in `src/index.js`, then publish the reviewed tarball from that directory.
+
 1. Update the version in `pyproject.toml`, `src/codex_client_provider/__init__.py`,
    and `src/codex_client_provider/langchain.py`.
 2. Update `CHANGELOG.md` and run all checks.

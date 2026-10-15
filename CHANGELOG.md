@@ -5,6 +5,15 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- Independent Node.js ESM package with TypeScript declarations, text/history,
+  image inputs, JSON Schema output, cancellation, and persistent JSONL transport.
+- Local npm packaging instructions, Next.js server/client examples, offline
+  protocol tests, and a Node.js CI matrix.
+
 ## [0.1.0] - 2026-09-19
 
 ### Added

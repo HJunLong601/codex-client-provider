@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/codex-client-provider.svg)](https://pypi.org/project/codex-client-provider/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Reusable Python and LangChain adapter for the official `codex app-server`
+Reusable Python/LangChain adapter and Node.js package for the official `codex app-server`
 protocol. It lets a local application use the Codex model access already managed
 by the installed Codex client, without asking the user for an OpenAI API key.
 
@@ -40,7 +40,7 @@ flowchart LR
 
 ## Requirements
 
-- Python 3.10 or newer.
+- Python 3.10+ for the Python adapter, or Node.js 20.3+ for the Node package.
 - A compatible Codex CLI or Codex desktop installation.
 - An active Codex login.
 
@@ -52,6 +52,30 @@ codex login status
 ```
 
 ## Install
+
+### Node.js / React / Next.js
+
+An independent [Node.js package with TypeScript declarations](packages/node/README.md)
+is available in `packages/node`; it does not require Python. It is not published
+to npm yet. Run `npm pack` there and install the generated `.tgz` in your app.
+
+```js
+import { CodexClient } from 'codex-client-provider';
+
+const client = new CodexClient();
+try {
+  console.log((await client.invoke('Explain React hooks in one sentence.')).content);
+} finally {
+  await client.close();
+}
+```
+
+React browser code calls a Node backend over HTTP. See the
+[Next.js App Router example](packages/node/examples/nextjs/). Codex must be
+installed and signed in on the backend machine. Requires Node.js 20.3+.
+The LangChain, tool-call, and image compression sections below describe Python.
+
+### Python
 
 Install the published package from PyPI:
 

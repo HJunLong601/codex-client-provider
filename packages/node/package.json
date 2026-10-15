@@ -1,0 +1,45 @@
+{
+  "name": "codex-client-provider",
+  "version": "0.1.0",
+  "description": "Node.js client for a locally signed-in Codex App Server",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "node": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "examples",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20.3"
+  },
+  "scripts": {
+    "test": "node --test test/client.test.js",
+    "typecheck": "tsc --noEmit",
+    "smoke": "node examples/basic.js"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HJunLong601/codex-client-provider.git",
+    "directory": "packages/node"
+  },
+  "keywords": [
+    "codex",
+    "node",
+    "react",
+    "nextjs",
+    "app-server"
+  ],
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

@@ -6,7 +6,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/codex-client-provider.svg)](https://pypi.org/project/codex-client-provider/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-面向官方 `codex app-server` 协议的可复用 Python 与 LangChain 适配器。它让本地应用
+面向官方 `codex app-server` 协议的 Python／LangChain 适配器与 Node.js 包。它让本地应用
 直接使用已安装 Codex 客户端管理的模型能力，无需让用户另外配置 OpenAI API Key。
 
 Provider 不会读取、复制、记录或保存 Codex 认证文件。它负责启动
@@ -38,7 +38,7 @@ flowchart LR
 
 ## 环境要求
 
-- Python 3.10 或更高版本。
+- Python 适配器需要 Python 3.10+；Node 包需要 Node.js 20.3+。
 - 兼容的 Codex CLI 或 Codex 桌面客户端。
 - 有效的 Codex 登录状态。
 
@@ -50,6 +50,37 @@ codex login status
 ```
 
 ## 安装
+
+### Node.js / React / Next.js
+
+已提供独立的 [Node.js 包及接入示例](packages/node/README.md)，无需 Python，包含
+TypeScript 类型、消息历史、图片和 JSON Schema 输出支持。目前尚未发布 npm；先打包：
+
+```console
+cd packages/node
+npm pack
+```
+
+在其他项目中安装生成的 `.tgz`，然后在 Node.js 服务端调用：
+
+```javascript
+import { CodexClient } from 'codex-client-provider';
+
+const client = new CodexClient();
+try {
+  const result = await client.invoke('用一句话解释 React hooks');
+  console.log(result.content);
+} finally {
+  await client.close();
+}
+```
+
+React 浏览器端通过 HTTP 接口调用 Node 后端；Next.js 使用 Node runtime 路由。
+Codex 必须安装并登录在运行后端的机器上。完整示例见
+[Next.js 接入文件](packages/node/examples/nextjs/)。Node 版本要求为 20.3+；
+本页下方的 LangChain、工具调用和图片压缩说明针对 Python 实现。
+
+### Python
 
 从 PyPI 安装已发布版本：
 
